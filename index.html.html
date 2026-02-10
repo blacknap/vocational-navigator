@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocational Navigator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #0066cc;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-bottom: 2px solid #003366;
+        }
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+        nav a {
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            float: left;
+            display: block;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #575757;
+        }
+        section {
+            padding: 40px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        section h2 {
+            font-size: 2.5em;
+            color: #333;
+        }
+        button {
+            background-color: #0066cc;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #003366;
+        }
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #d9f7d9;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px;
+            background-color: #e9f5ff;
+        }
+        .card h3 {
+            font-size: 1.5em;
+            color: #0066cc;
+        }
+        .card p {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Vocational Navigator</h1>
+        <p>Prepare for German Job Interviews and Application Tasks</p>
+    </header>
+
+    <nav>
+        <a href="#interviews">Interview Simulations</a>
+        <a href="#cv-writing">CV Writing</a>
+        <a href="#cultural-insights">Cultural Insights</a>
+        <a href="#feedback">Personalized Feedback</a>
+    </nav>
+
+    <section id="interviews">
+        <h2>Interview Simulations</h2>
+        <div class="card">
+            <h3>Simulated Interview Questions</h3>
+            <p>Practice answering common job interview questions in German. Our system will give you real-time feedback on your language use, pronunciation, and cultural appropriateness.</p>
+            <button onclick="startInterviewSimulation()">Start Interview Simulation</button>
+            <div id="interview-questions" style="display:none;">
+                <p><strong>Question 1:</strong> Tell us about yourself.</p>
+                <input type="text" id="response" placeholder="Your response here...">
+                <button onclick="provideInterviewFeedback()">Submit Response</button>
+            </div>
+        </div>
+        <div class="feedback" id="interview-feedback" style="display:none;">
+            <p>Feedback: Well done! You answered confidently. Remember to keep your tone formal during interviews.</p>
+        </div>
+    </section>
+
+    <section id="cv-writing">
+        <h2>CV Writing Assistance</h2>
+        <div class="card">
+            <h3>Step-by-step CV Creation</h3>
+            <p>Learn how to create a professional CV tailored to the German job market. Get tips on formatting, content, and key sections like work experience and education.</p>
+            <button onclick="startCVWritingGuide()">Start CV Writing Guide</button>
+            <div id="cv-guide" style="display:none;">
+                <p><strong>Step 1:</strong> Add personal information.</p>
+                <p><strong>Step 2:</strong> Add your work experience.</p>
+                <p><strong>Step 3:</strong> Include your education.</p>
+                <input type="text" id="cv-input" placeholder="Enter information for your CV...">
+                <button onclick="provideCVFeedback()">Submit CV</button>
+            </div>
+        </div>
+        <div class="feedback" id="cv-feedback" style="display:none;">
+            <p>Feedback: Great job! Consider adding a professional summary at the top of your CV for more impact.</p>
+        </div>
+    </section>
+
+    <section id="cultural-insights">
+        <h2>Cultural Insights</h2>
+        <div class="card">
+            <h3>Preparing for a German Job Interview</h3>
+            <p>Understand the cultural norms and expectations of job interviews in Germany. Learn about greetings, body language, and interview etiquette.</p>
+            <button onclick="startCulturalInsights()">Start Cultural Insights Module</button>
+            <div id="cultural-tips" style="display:none;">
+                <p><strong>Tip 1:</strong> Always greet your interviewers with a firm handshake.</p>
+                <p><strong>Tip 2:</strong> Address interviewers by their titles (Herr or Frau).</p>
+                <button onclick="finishCulturalModule()">Finish Module</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="feedback">
+        <h2>Personalized Feedback</h2>
+        <div class="feedback">
+            <p>After completing each task, you will receive personalized feedback on your performance. The feedback will help you identify areas for improvement and track your progress.</p>
+            <button onclick="viewFeedback()">View Feedback</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Vocational Navigator. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function startInterviewSimulation() {
+            document.getElementById("interview-questions").style.display = "block";
+        }
+
+        function provideInterviewFeedback() {
+            document.getElementById("interview-questions").style.display = "none";
+            document.getElementById("interview-feedback").style.display = "block";
+        }
+
+        function startCVWritingGuide() {
+            document.getElementById("cv-guide").style.display = "block";
+        }
+
+        function provideCVFeedback() {
+            document.getElementById("cv-guide").style.display = "none";
+            document.getElementById("cv-feedback").style.display = "block";
+        }
+
+        function startCulturalInsights() {
+            document.getElementById("cultural-tips").style.display = "block";
+        }
+
+        function finishCulturalModule() {
+            document.getElementById("cultural-tips").style.display = "none";
+            alert("Cultural Insights Module Complete!");
+        }
+
+        function viewFeedback() {
+            alert("View your feedback for the interview, CV, and cultural tasks here!");
+        }
+    </script>
+
+</body>
+</html>
